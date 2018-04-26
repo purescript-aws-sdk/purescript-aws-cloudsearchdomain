@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -29,8 +28,8 @@ instance encodeAdds :: Encode Adds where encode = genericEncode options
 
 -- | <p>A container for facet information. </p>
 newtype Bucket = Bucket 
-  { "value" :: NullOrUndefined (String)
-  , "count" :: NullOrUndefined (Number)
+  { "value" :: Maybe (String)
+  , "count" :: Maybe (Number)
   }
 derive instance newtypeBucket :: Newtype Bucket _
 derive instance repGenericBucket :: Generic Bucket _
@@ -40,18 +39,18 @@ instance encodeBucket :: Encode Bucket where encode = genericEncode options
 
 -- | Constructs Bucket from required parameters
 newBucket :: Bucket
-newBucket  = Bucket { "count": (NullOrUndefined Nothing), "value": (NullOrUndefined Nothing) }
+newBucket  = Bucket { "count": Nothing, "value": Nothing }
 
 -- | Constructs Bucket's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBucket' :: ( { "value" :: NullOrUndefined (String) , "count" :: NullOrUndefined (Number) } -> {"value" :: NullOrUndefined (String) , "count" :: NullOrUndefined (Number) } ) -> Bucket
-newBucket'  customize = (Bucket <<< customize) { "count": (NullOrUndefined Nothing), "value": (NullOrUndefined Nothing) }
+newBucket' :: ( { "value" :: Maybe (String) , "count" :: Maybe (Number) } -> {"value" :: Maybe (String) , "count" :: Maybe (Number) } ) -> Bucket
+newBucket'  customize = (Bucket <<< customize) { "count": Nothing, "value": Nothing }
 
 
 
 -- | <p>A container for the calculated facet values and counts.</p>
 newtype BucketInfo = BucketInfo 
-  { "buckets" :: NullOrUndefined (BucketList)
+  { "buckets" :: Maybe (BucketList)
   }
 derive instance newtypeBucketInfo :: Newtype BucketInfo _
 derive instance repGenericBucketInfo :: Generic BucketInfo _
@@ -61,12 +60,12 @@ instance encodeBucketInfo :: Encode BucketInfo where encode = genericEncode opti
 
 -- | Constructs BucketInfo from required parameters
 newBucketInfo :: BucketInfo
-newBucketInfo  = BucketInfo { "buckets": (NullOrUndefined Nothing) }
+newBucketInfo  = BucketInfo { "buckets": Nothing }
 
 -- | Constructs BucketInfo's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBucketInfo' :: ( { "buckets" :: NullOrUndefined (BucketList) } -> {"buckets" :: NullOrUndefined (BucketList) } ) -> BucketInfo
-newBucketInfo'  customize = (BucketInfo <<< customize) { "buckets": (NullOrUndefined Nothing) }
+newBucketInfo' :: ( { "buckets" :: Maybe (BucketList) } -> {"buckets" :: Maybe (BucketList) } ) -> BucketInfo
+newBucketInfo'  customize = (BucketInfo <<< customize) { "buckets": Nothing }
 
 
 
@@ -108,8 +107,8 @@ instance encodeDeletes :: Encode Deletes where encode = genericEncode options
 
 -- | <p>Information about any problems encountered while processing an upload request.</p>
 newtype DocumentServiceException = DocumentServiceException 
-  { "status" :: NullOrUndefined (String)
-  , "message" :: NullOrUndefined (String)
+  { "status" :: Maybe (String)
+  , "message" :: Maybe (String)
   }
 derive instance newtypeDocumentServiceException :: Newtype DocumentServiceException _
 derive instance repGenericDocumentServiceException :: Generic DocumentServiceException _
@@ -119,18 +118,18 @@ instance encodeDocumentServiceException :: Encode DocumentServiceException where
 
 -- | Constructs DocumentServiceException from required parameters
 newDocumentServiceException :: DocumentServiceException
-newDocumentServiceException  = DocumentServiceException { "message": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing) }
+newDocumentServiceException  = DocumentServiceException { "message": Nothing, "status": Nothing }
 
 -- | Constructs DocumentServiceException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDocumentServiceException' :: ( { "status" :: NullOrUndefined (String) , "message" :: NullOrUndefined (String) } -> {"status" :: NullOrUndefined (String) , "message" :: NullOrUndefined (String) } ) -> DocumentServiceException
-newDocumentServiceException'  customize = (DocumentServiceException <<< customize) { "message": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing) }
+newDocumentServiceException' :: ( { "status" :: Maybe (String) , "message" :: Maybe (String) } -> {"status" :: Maybe (String) , "message" :: Maybe (String) } ) -> DocumentServiceException
+newDocumentServiceException'  customize = (DocumentServiceException <<< customize) { "message": Nothing, "status": Nothing }
 
 
 
 -- | <p>A warning returned by the document service when an issue is discovered while processing an upload request.</p>
 newtype DocumentServiceWarning = DocumentServiceWarning 
-  { "message" :: NullOrUndefined (String)
+  { "message" :: Maybe (String)
   }
 derive instance newtypeDocumentServiceWarning :: Newtype DocumentServiceWarning _
 derive instance repGenericDocumentServiceWarning :: Generic DocumentServiceWarning _
@@ -140,12 +139,12 @@ instance encodeDocumentServiceWarning :: Encode DocumentServiceWarning where enc
 
 -- | Constructs DocumentServiceWarning from required parameters
 newDocumentServiceWarning :: DocumentServiceWarning
-newDocumentServiceWarning  = DocumentServiceWarning { "message": (NullOrUndefined Nothing) }
+newDocumentServiceWarning  = DocumentServiceWarning { "message": Nothing }
 
 -- | Constructs DocumentServiceWarning's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDocumentServiceWarning' :: ( { "message" :: NullOrUndefined (String) } -> {"message" :: NullOrUndefined (String) } ) -> DocumentServiceWarning
-newDocumentServiceWarning'  customize = (DocumentServiceWarning <<< customize) { "message": (NullOrUndefined Nothing) }
+newDocumentServiceWarning' :: ( { "message" :: Maybe (String) } -> {"message" :: Maybe (String) } ) -> DocumentServiceWarning
+newDocumentServiceWarning'  customize = (DocumentServiceWarning <<< customize) { "message": Nothing }
 
 
 
@@ -196,14 +195,14 @@ instance encodeFacets :: Encode Facets where encode = genericEncode options
 
 -- | <p>The statistics for a field calculated in the request.</p>
 newtype FieldStats = FieldStats 
-  { "min" :: NullOrUndefined (String)
-  , "max" :: NullOrUndefined (String)
-  , "count" :: NullOrUndefined (Number)
-  , "missing" :: NullOrUndefined (Number)
-  , "sum" :: NullOrUndefined (Number)
-  , "sumOfSquares" :: NullOrUndefined (Number)
-  , "mean" :: NullOrUndefined (String)
-  , "stddev" :: NullOrUndefined (Number)
+  { "min" :: Maybe (String)
+  , "max" :: Maybe (String)
+  , "count" :: Maybe (Number)
+  , "missing" :: Maybe (Number)
+  , "sum" :: Maybe (Number)
+  , "sumOfSquares" :: Maybe (Number)
+  , "mean" :: Maybe (String)
+  , "stddev" :: Maybe (Number)
   }
 derive instance newtypeFieldStats :: Newtype FieldStats _
 derive instance repGenericFieldStats :: Generic FieldStats _
@@ -213,12 +212,12 @@ instance encodeFieldStats :: Encode FieldStats where encode = genericEncode opti
 
 -- | Constructs FieldStats from required parameters
 newFieldStats :: FieldStats
-newFieldStats  = FieldStats { "count": (NullOrUndefined Nothing), "max": (NullOrUndefined Nothing), "mean": (NullOrUndefined Nothing), "min": (NullOrUndefined Nothing), "missing": (NullOrUndefined Nothing), "stddev": (NullOrUndefined Nothing), "sum": (NullOrUndefined Nothing), "sumOfSquares": (NullOrUndefined Nothing) }
+newFieldStats  = FieldStats { "count": Nothing, "max": Nothing, "mean": Nothing, "min": Nothing, "missing": Nothing, "stddev": Nothing, "sum": Nothing, "sumOfSquares": Nothing }
 
 -- | Constructs FieldStats's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFieldStats' :: ( { "min" :: NullOrUndefined (String) , "max" :: NullOrUndefined (String) , "count" :: NullOrUndefined (Number) , "missing" :: NullOrUndefined (Number) , "sum" :: NullOrUndefined (Number) , "sumOfSquares" :: NullOrUndefined (Number) , "mean" :: NullOrUndefined (String) , "stddev" :: NullOrUndefined (Number) } -> {"min" :: NullOrUndefined (String) , "max" :: NullOrUndefined (String) , "count" :: NullOrUndefined (Number) , "missing" :: NullOrUndefined (Number) , "sum" :: NullOrUndefined (Number) , "sumOfSquares" :: NullOrUndefined (Number) , "mean" :: NullOrUndefined (String) , "stddev" :: NullOrUndefined (Number) } ) -> FieldStats
-newFieldStats'  customize = (FieldStats <<< customize) { "count": (NullOrUndefined Nothing), "max": (NullOrUndefined Nothing), "mean": (NullOrUndefined Nothing), "min": (NullOrUndefined Nothing), "missing": (NullOrUndefined Nothing), "stddev": (NullOrUndefined Nothing), "sum": (NullOrUndefined Nothing), "sumOfSquares": (NullOrUndefined Nothing) }
+newFieldStats' :: ( { "min" :: Maybe (String) , "max" :: Maybe (String) , "count" :: Maybe (Number) , "missing" :: Maybe (Number) , "sum" :: Maybe (Number) , "sumOfSquares" :: Maybe (Number) , "mean" :: Maybe (String) , "stddev" :: Maybe (Number) } -> {"min" :: Maybe (String) , "max" :: Maybe (String) , "count" :: Maybe (Number) , "missing" :: Maybe (Number) , "sum" :: Maybe (Number) , "sumOfSquares" :: Maybe (Number) , "mean" :: Maybe (String) , "stddev" :: Maybe (Number) } ) -> FieldStats
+newFieldStats'  customize = (FieldStats <<< customize) { "count": Nothing, "max": Nothing, "mean": Nothing, "min": Nothing, "missing": Nothing, "stddev": Nothing, "sum": Nothing, "sumOfSquares": Nothing }
 
 
 
@@ -269,10 +268,10 @@ instance encodeHighlights :: Encode Highlights where encode = genericEncode opti
 
 -- | <p>Information about a document that matches the search request.</p>
 newtype Hit = Hit 
-  { "id" :: NullOrUndefined (String)
-  , "fields" :: NullOrUndefined (Fields)
-  , "exprs" :: NullOrUndefined (Exprs)
-  , "highlights" :: NullOrUndefined (Highlights)
+  { "id" :: Maybe (String)
+  , "fields" :: Maybe (Fields)
+  , "exprs" :: Maybe (Exprs)
+  , "highlights" :: Maybe (Highlights)
   }
 derive instance newtypeHit :: Newtype Hit _
 derive instance repGenericHit :: Generic Hit _
@@ -282,12 +281,12 @@ instance encodeHit :: Encode Hit where encode = genericEncode options
 
 -- | Constructs Hit from required parameters
 newHit :: Hit
-newHit  = Hit { "exprs": (NullOrUndefined Nothing), "fields": (NullOrUndefined Nothing), "highlights": (NullOrUndefined Nothing), "id": (NullOrUndefined Nothing) }
+newHit  = Hit { "exprs": Nothing, "fields": Nothing, "highlights": Nothing, "id": Nothing }
 
 -- | Constructs Hit's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newHit' :: ( { "id" :: NullOrUndefined (String) , "fields" :: NullOrUndefined (Fields) , "exprs" :: NullOrUndefined (Exprs) , "highlights" :: NullOrUndefined (Highlights) } -> {"id" :: NullOrUndefined (String) , "fields" :: NullOrUndefined (Fields) , "exprs" :: NullOrUndefined (Exprs) , "highlights" :: NullOrUndefined (Highlights) } ) -> Hit
-newHit'  customize = (Hit <<< customize) { "exprs": (NullOrUndefined Nothing), "fields": (NullOrUndefined Nothing), "highlights": (NullOrUndefined Nothing), "id": (NullOrUndefined Nothing) }
+newHit' :: ( { "id" :: Maybe (String) , "fields" :: Maybe (Fields) , "exprs" :: Maybe (Exprs) , "highlights" :: Maybe (Highlights) } -> {"id" :: Maybe (String) , "fields" :: Maybe (Fields) , "exprs" :: Maybe (Exprs) , "highlights" :: Maybe (Highlights) } ) -> Hit
+newHit'  customize = (Hit <<< customize) { "exprs": Nothing, "fields": Nothing, "highlights": Nothing, "id": Nothing }
 
 
 
@@ -302,10 +301,10 @@ instance encodeHitList :: Encode HitList where encode = genericEncode options
 
 -- | <p>The collection of documents that match the search request.</p>
 newtype Hits = Hits 
-  { "found" :: NullOrUndefined (Number)
-  , "start" :: NullOrUndefined (Number)
-  , "cursor" :: NullOrUndefined (String)
-  , "hit" :: NullOrUndefined (HitList)
+  { "found" :: Maybe (Number)
+  , "start" :: Maybe (Number)
+  , "cursor" :: Maybe (String)
+  , "hit" :: Maybe (HitList)
   }
 derive instance newtypeHits :: Newtype Hits _
 derive instance repGenericHits :: Generic Hits _
@@ -315,12 +314,12 @@ instance encodeHits :: Encode Hits where encode = genericEncode options
 
 -- | Constructs Hits from required parameters
 newHits :: Hits
-newHits  = Hits { "cursor": (NullOrUndefined Nothing), "found": (NullOrUndefined Nothing), "hit": (NullOrUndefined Nothing), "start": (NullOrUndefined Nothing) }
+newHits  = Hits { "cursor": Nothing, "found": Nothing, "hit": Nothing, "start": Nothing }
 
 -- | Constructs Hits's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newHits' :: ( { "found" :: NullOrUndefined (Number) , "start" :: NullOrUndefined (Number) , "cursor" :: NullOrUndefined (String) , "hit" :: NullOrUndefined (HitList) } -> {"found" :: NullOrUndefined (Number) , "start" :: NullOrUndefined (Number) , "cursor" :: NullOrUndefined (String) , "hit" :: NullOrUndefined (HitList) } ) -> Hits
-newHits'  customize = (Hits <<< customize) { "cursor": (NullOrUndefined Nothing), "found": (NullOrUndefined Nothing), "hit": (NullOrUndefined Nothing), "start": (NullOrUndefined Nothing) }
+newHits' :: ( { "found" :: Maybe (Number) , "start" :: Maybe (Number) , "cursor" :: Maybe (String) , "hit" :: Maybe (HitList) } -> {"found" :: Maybe (Number) , "start" :: Maybe (Number) , "cursor" :: Maybe (String) , "hit" :: Maybe (HitList) } ) -> Hits
+newHits'  customize = (Hits <<< customize) { "cursor": Nothing, "found": Nothing, "hit": Nothing, "start": Nothing }
 
 
 
@@ -371,7 +370,7 @@ instance encodeReturn :: Encode Return where encode = genericEncode options
 
 -- | <p>Information about any problems encountered while processing a search request.</p>
 newtype SearchException = SearchException 
-  { "message" :: NullOrUndefined (String)
+  { "message" :: Maybe (String)
   }
 derive instance newtypeSearchException :: Newtype SearchException _
 derive instance repGenericSearchException :: Generic SearchException _
@@ -381,31 +380,31 @@ instance encodeSearchException :: Encode SearchException where encode = genericE
 
 -- | Constructs SearchException from required parameters
 newSearchException :: SearchException
-newSearchException  = SearchException { "message": (NullOrUndefined Nothing) }
+newSearchException  = SearchException { "message": Nothing }
 
 -- | Constructs SearchException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchException' :: ( { "message" :: NullOrUndefined (String) } -> {"message" :: NullOrUndefined (String) } ) -> SearchException
-newSearchException'  customize = (SearchException <<< customize) { "message": (NullOrUndefined Nothing) }
+newSearchException' :: ( { "message" :: Maybe (String) } -> {"message" :: Maybe (String) } ) -> SearchException
+newSearchException'  customize = (SearchException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Container for the parameters to the <code>Search</code> request.</p>
 newtype SearchRequest = SearchRequest 
-  { "cursor" :: NullOrUndefined (Cursor)
-  , "expr" :: NullOrUndefined (Expr)
-  , "facet" :: NullOrUndefined (Facet)
-  , "filterQuery" :: NullOrUndefined (FilterQuery)
-  , "highlight" :: NullOrUndefined (Highlight)
-  , "partial" :: NullOrUndefined (Partial'')
+  { "cursor" :: Maybe (Cursor)
+  , "expr" :: Maybe (Expr)
+  , "facet" :: Maybe (Facet)
+  , "filterQuery" :: Maybe (FilterQuery)
+  , "highlight" :: Maybe (Highlight)
+  , "partial" :: Maybe (Partial'')
   , "query" :: (Query)
-  , "queryOptions" :: NullOrUndefined (QueryOptions)
-  , "queryParser" :: NullOrUndefined (QueryParser)
-  , "return" :: NullOrUndefined (Return)
-  , "size" :: NullOrUndefined (Size)
-  , "sort" :: NullOrUndefined (Sort)
-  , "start" :: NullOrUndefined (Start)
-  , "stats" :: NullOrUndefined (Stat)
+  , "queryOptions" :: Maybe (QueryOptions)
+  , "queryParser" :: Maybe (QueryParser)
+  , "return" :: Maybe (Return)
+  , "size" :: Maybe (Size)
+  , "sort" :: Maybe (Sort)
+  , "start" :: Maybe (Start)
+  , "stats" :: Maybe (Stat)
   }
 derive instance newtypeSearchRequest :: Newtype SearchRequest _
 derive instance repGenericSearchRequest :: Generic SearchRequest _
@@ -415,21 +414,21 @@ instance encodeSearchRequest :: Encode SearchRequest where encode = genericEncod
 
 -- | Constructs SearchRequest from required parameters
 newSearchRequest :: Query -> SearchRequest
-newSearchRequest _query = SearchRequest { "query": _query, "cursor": (NullOrUndefined Nothing), "expr": (NullOrUndefined Nothing), "facet": (NullOrUndefined Nothing), "filterQuery": (NullOrUndefined Nothing), "highlight": (NullOrUndefined Nothing), "partial": (NullOrUndefined Nothing), "queryOptions": (NullOrUndefined Nothing), "queryParser": (NullOrUndefined Nothing), "return": (NullOrUndefined Nothing), "size": (NullOrUndefined Nothing), "sort": (NullOrUndefined Nothing), "start": (NullOrUndefined Nothing), "stats": (NullOrUndefined Nothing) }
+newSearchRequest _query = SearchRequest { "query": _query, "cursor": Nothing, "expr": Nothing, "facet": Nothing, "filterQuery": Nothing, "highlight": Nothing, "partial": Nothing, "queryOptions": Nothing, "queryParser": Nothing, "return": Nothing, "size": Nothing, "sort": Nothing, "start": Nothing, "stats": Nothing }
 
 -- | Constructs SearchRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchRequest' :: Query -> ( { "cursor" :: NullOrUndefined (Cursor) , "expr" :: NullOrUndefined (Expr) , "facet" :: NullOrUndefined (Facet) , "filterQuery" :: NullOrUndefined (FilterQuery) , "highlight" :: NullOrUndefined (Highlight) , "partial" :: NullOrUndefined (Partial'') , "query" :: (Query) , "queryOptions" :: NullOrUndefined (QueryOptions) , "queryParser" :: NullOrUndefined (QueryParser) , "return" :: NullOrUndefined (Return) , "size" :: NullOrUndefined (Size) , "sort" :: NullOrUndefined (Sort) , "start" :: NullOrUndefined (Start) , "stats" :: NullOrUndefined (Stat) } -> {"cursor" :: NullOrUndefined (Cursor) , "expr" :: NullOrUndefined (Expr) , "facet" :: NullOrUndefined (Facet) , "filterQuery" :: NullOrUndefined (FilterQuery) , "highlight" :: NullOrUndefined (Highlight) , "partial" :: NullOrUndefined (Partial'') , "query" :: (Query) , "queryOptions" :: NullOrUndefined (QueryOptions) , "queryParser" :: NullOrUndefined (QueryParser) , "return" :: NullOrUndefined (Return) , "size" :: NullOrUndefined (Size) , "sort" :: NullOrUndefined (Sort) , "start" :: NullOrUndefined (Start) , "stats" :: NullOrUndefined (Stat) } ) -> SearchRequest
-newSearchRequest' _query customize = (SearchRequest <<< customize) { "query": _query, "cursor": (NullOrUndefined Nothing), "expr": (NullOrUndefined Nothing), "facet": (NullOrUndefined Nothing), "filterQuery": (NullOrUndefined Nothing), "highlight": (NullOrUndefined Nothing), "partial": (NullOrUndefined Nothing), "queryOptions": (NullOrUndefined Nothing), "queryParser": (NullOrUndefined Nothing), "return": (NullOrUndefined Nothing), "size": (NullOrUndefined Nothing), "sort": (NullOrUndefined Nothing), "start": (NullOrUndefined Nothing), "stats": (NullOrUndefined Nothing) }
+newSearchRequest' :: Query -> ( { "cursor" :: Maybe (Cursor) , "expr" :: Maybe (Expr) , "facet" :: Maybe (Facet) , "filterQuery" :: Maybe (FilterQuery) , "highlight" :: Maybe (Highlight) , "partial" :: Maybe (Partial'') , "query" :: (Query) , "queryOptions" :: Maybe (QueryOptions) , "queryParser" :: Maybe (QueryParser) , "return" :: Maybe (Return) , "size" :: Maybe (Size) , "sort" :: Maybe (Sort) , "start" :: Maybe (Start) , "stats" :: Maybe (Stat) } -> {"cursor" :: Maybe (Cursor) , "expr" :: Maybe (Expr) , "facet" :: Maybe (Facet) , "filterQuery" :: Maybe (FilterQuery) , "highlight" :: Maybe (Highlight) , "partial" :: Maybe (Partial'') , "query" :: (Query) , "queryOptions" :: Maybe (QueryOptions) , "queryParser" :: Maybe (QueryParser) , "return" :: Maybe (Return) , "size" :: Maybe (Size) , "sort" :: Maybe (Sort) , "start" :: Maybe (Start) , "stats" :: Maybe (Stat) } ) -> SearchRequest
+newSearchRequest' _query customize = (SearchRequest <<< customize) { "query": _query, "cursor": Nothing, "expr": Nothing, "facet": Nothing, "filterQuery": Nothing, "highlight": Nothing, "partial": Nothing, "queryOptions": Nothing, "queryParser": Nothing, "return": Nothing, "size": Nothing, "sort": Nothing, "start": Nothing, "stats": Nothing }
 
 
 
 -- | <p>The result of a <code>Search</code> request. Contains the documents that match the specified search criteria and any requested fields, highlights, and facet information.</p>
 newtype SearchResponse = SearchResponse 
-  { "status" :: NullOrUndefined (SearchStatus)
-  , "hits" :: NullOrUndefined (Hits)
-  , "facets" :: NullOrUndefined (Facets)
-  , "stats" :: NullOrUndefined (Stats)
+  { "status" :: Maybe (SearchStatus)
+  , "hits" :: Maybe (Hits)
+  , "facets" :: Maybe (Facets)
+  , "stats" :: Maybe (Stats)
   }
 derive instance newtypeSearchResponse :: Newtype SearchResponse _
 derive instance repGenericSearchResponse :: Generic SearchResponse _
@@ -439,19 +438,19 @@ instance encodeSearchResponse :: Encode SearchResponse where encode = genericEnc
 
 -- | Constructs SearchResponse from required parameters
 newSearchResponse :: SearchResponse
-newSearchResponse  = SearchResponse { "facets": (NullOrUndefined Nothing), "hits": (NullOrUndefined Nothing), "stats": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing) }
+newSearchResponse  = SearchResponse { "facets": Nothing, "hits": Nothing, "stats": Nothing, "status": Nothing }
 
 -- | Constructs SearchResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchResponse' :: ( { "status" :: NullOrUndefined (SearchStatus) , "hits" :: NullOrUndefined (Hits) , "facets" :: NullOrUndefined (Facets) , "stats" :: NullOrUndefined (Stats) } -> {"status" :: NullOrUndefined (SearchStatus) , "hits" :: NullOrUndefined (Hits) , "facets" :: NullOrUndefined (Facets) , "stats" :: NullOrUndefined (Stats) } ) -> SearchResponse
-newSearchResponse'  customize = (SearchResponse <<< customize) { "facets": (NullOrUndefined Nothing), "hits": (NullOrUndefined Nothing), "stats": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing) }
+newSearchResponse' :: ( { "status" :: Maybe (SearchStatus) , "hits" :: Maybe (Hits) , "facets" :: Maybe (Facets) , "stats" :: Maybe (Stats) } -> {"status" :: Maybe (SearchStatus) , "hits" :: Maybe (Hits) , "facets" :: Maybe (Facets) , "stats" :: Maybe (Stats) } ) -> SearchResponse
+newSearchResponse'  customize = (SearchResponse <<< customize) { "facets": Nothing, "hits": Nothing, "stats": Nothing, "status": Nothing }
 
 
 
 -- | <p>Contains the resource id (<code>rid</code>) and the time it took to process the request (<code>timems</code>).</p>
 newtype SearchStatus = SearchStatus 
-  { "timems" :: NullOrUndefined (Number)
-  , "rid" :: NullOrUndefined (String)
+  { "timems" :: Maybe (Number)
+  , "rid" :: Maybe (String)
   }
 derive instance newtypeSearchStatus :: Newtype SearchStatus _
 derive instance repGenericSearchStatus :: Generic SearchStatus _
@@ -461,12 +460,12 @@ instance encodeSearchStatus :: Encode SearchStatus where encode = genericEncode 
 
 -- | Constructs SearchStatus from required parameters
 newSearchStatus :: SearchStatus
-newSearchStatus  = SearchStatus { "rid": (NullOrUndefined Nothing), "timems": (NullOrUndefined Nothing) }
+newSearchStatus  = SearchStatus { "rid": Nothing, "timems": Nothing }
 
 -- | Constructs SearchStatus's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchStatus' :: ( { "timems" :: NullOrUndefined (Number) , "rid" :: NullOrUndefined (String) } -> {"timems" :: NullOrUndefined (Number) , "rid" :: NullOrUndefined (String) } ) -> SearchStatus
-newSearchStatus'  customize = (SearchStatus <<< customize) { "rid": (NullOrUndefined Nothing), "timems": (NullOrUndefined Nothing) }
+newSearchStatus' :: ( { "timems" :: Maybe (Number) , "rid" :: Maybe (String) } -> {"timems" :: Maybe (Number) , "rid" :: Maybe (String) } ) -> SearchStatus
+newSearchStatus'  customize = (SearchStatus <<< customize) { "rid": Nothing, "timems": Nothing }
 
 
 
@@ -518,9 +517,9 @@ instance encodeStats :: Encode Stats where encode = genericEncode options
 
 -- | <p>Container for the suggestion information returned in a <code>SuggestResponse</code>.</p>
 newtype SuggestModel = SuggestModel 
-  { "query" :: NullOrUndefined (String)
-  , "found" :: NullOrUndefined (Number)
-  , "suggestions" :: NullOrUndefined (Suggestions)
+  { "query" :: Maybe (String)
+  , "found" :: Maybe (Number)
+  , "suggestions" :: Maybe (Suggestions)
   }
 derive instance newtypeSuggestModel :: Newtype SuggestModel _
 derive instance repGenericSuggestModel :: Generic SuggestModel _
@@ -530,12 +529,12 @@ instance encodeSuggestModel :: Encode SuggestModel where encode = genericEncode 
 
 -- | Constructs SuggestModel from required parameters
 newSuggestModel :: SuggestModel
-newSuggestModel  = SuggestModel { "found": (NullOrUndefined Nothing), "query": (NullOrUndefined Nothing), "suggestions": (NullOrUndefined Nothing) }
+newSuggestModel  = SuggestModel { "found": Nothing, "query": Nothing, "suggestions": Nothing }
 
 -- | Constructs SuggestModel's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSuggestModel' :: ( { "query" :: NullOrUndefined (String) , "found" :: NullOrUndefined (Number) , "suggestions" :: NullOrUndefined (Suggestions) } -> {"query" :: NullOrUndefined (String) , "found" :: NullOrUndefined (Number) , "suggestions" :: NullOrUndefined (Suggestions) } ) -> SuggestModel
-newSuggestModel'  customize = (SuggestModel <<< customize) { "found": (NullOrUndefined Nothing), "query": (NullOrUndefined Nothing), "suggestions": (NullOrUndefined Nothing) }
+newSuggestModel' :: ( { "query" :: Maybe (String) , "found" :: Maybe (Number) , "suggestions" :: Maybe (Suggestions) } -> {"query" :: Maybe (String) , "found" :: Maybe (Number) , "suggestions" :: Maybe (Suggestions) } ) -> SuggestModel
+newSuggestModel'  customize = (SuggestModel <<< customize) { "found": Nothing, "query": Nothing, "suggestions": Nothing }
 
 
 
@@ -543,7 +542,7 @@ newSuggestModel'  customize = (SuggestModel <<< customize) { "found": (NullOrUnd
 newtype SuggestRequest = SuggestRequest 
   { "query" :: (Query)
   , "suggester" :: (Suggester)
-  , "size" :: NullOrUndefined (SuggestionsSize)
+  , "size" :: Maybe (SuggestionsSize)
   }
 derive instance newtypeSuggestRequest :: Newtype SuggestRequest _
 derive instance repGenericSuggestRequest :: Generic SuggestRequest _
@@ -553,19 +552,19 @@ instance encodeSuggestRequest :: Encode SuggestRequest where encode = genericEnc
 
 -- | Constructs SuggestRequest from required parameters
 newSuggestRequest :: Query -> Suggester -> SuggestRequest
-newSuggestRequest _query _suggester = SuggestRequest { "query": _query, "suggester": _suggester, "size": (NullOrUndefined Nothing) }
+newSuggestRequest _query _suggester = SuggestRequest { "query": _query, "suggester": _suggester, "size": Nothing }
 
 -- | Constructs SuggestRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSuggestRequest' :: Query -> Suggester -> ( { "query" :: (Query) , "suggester" :: (Suggester) , "size" :: NullOrUndefined (SuggestionsSize) } -> {"query" :: (Query) , "suggester" :: (Suggester) , "size" :: NullOrUndefined (SuggestionsSize) } ) -> SuggestRequest
-newSuggestRequest' _query _suggester customize = (SuggestRequest <<< customize) { "query": _query, "suggester": _suggester, "size": (NullOrUndefined Nothing) }
+newSuggestRequest' :: Query -> Suggester -> ( { "query" :: (Query) , "suggester" :: (Suggester) , "size" :: Maybe (SuggestionsSize) } -> {"query" :: (Query) , "suggester" :: (Suggester) , "size" :: Maybe (SuggestionsSize) } ) -> SuggestRequest
+newSuggestRequest' _query _suggester customize = (SuggestRequest <<< customize) { "query": _query, "suggester": _suggester, "size": Nothing }
 
 
 
 -- | <p>Contains the response to a <code>Suggest</code> request.</p>
 newtype SuggestResponse = SuggestResponse 
-  { "status" :: NullOrUndefined (SuggestStatus)
-  , "suggest" :: NullOrUndefined (SuggestModel)
+  { "status" :: Maybe (SuggestStatus)
+  , "suggest" :: Maybe (SuggestModel)
   }
 derive instance newtypeSuggestResponse :: Newtype SuggestResponse _
 derive instance repGenericSuggestResponse :: Generic SuggestResponse _
@@ -575,19 +574,19 @@ instance encodeSuggestResponse :: Encode SuggestResponse where encode = genericE
 
 -- | Constructs SuggestResponse from required parameters
 newSuggestResponse :: SuggestResponse
-newSuggestResponse  = SuggestResponse { "status": (NullOrUndefined Nothing), "suggest": (NullOrUndefined Nothing) }
+newSuggestResponse  = SuggestResponse { "status": Nothing, "suggest": Nothing }
 
 -- | Constructs SuggestResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSuggestResponse' :: ( { "status" :: NullOrUndefined (SuggestStatus) , "suggest" :: NullOrUndefined (SuggestModel) } -> {"status" :: NullOrUndefined (SuggestStatus) , "suggest" :: NullOrUndefined (SuggestModel) } ) -> SuggestResponse
-newSuggestResponse'  customize = (SuggestResponse <<< customize) { "status": (NullOrUndefined Nothing), "suggest": (NullOrUndefined Nothing) }
+newSuggestResponse' :: ( { "status" :: Maybe (SuggestStatus) , "suggest" :: Maybe (SuggestModel) } -> {"status" :: Maybe (SuggestStatus) , "suggest" :: Maybe (SuggestModel) } ) -> SuggestResponse
+newSuggestResponse'  customize = (SuggestResponse <<< customize) { "status": Nothing, "suggest": Nothing }
 
 
 
 -- | <p>Contains the resource id (<code>rid</code>) and the time it took to process the request (<code>timems</code>).</p>
 newtype SuggestStatus = SuggestStatus 
-  { "timems" :: NullOrUndefined (Number)
-  , "rid" :: NullOrUndefined (String)
+  { "timems" :: Maybe (Number)
+  , "rid" :: Maybe (String)
   }
 derive instance newtypeSuggestStatus :: Newtype SuggestStatus _
 derive instance repGenericSuggestStatus :: Generic SuggestStatus _
@@ -597,12 +596,12 @@ instance encodeSuggestStatus :: Encode SuggestStatus where encode = genericEncod
 
 -- | Constructs SuggestStatus from required parameters
 newSuggestStatus :: SuggestStatus
-newSuggestStatus  = SuggestStatus { "rid": (NullOrUndefined Nothing), "timems": (NullOrUndefined Nothing) }
+newSuggestStatus  = SuggestStatus { "rid": Nothing, "timems": Nothing }
 
 -- | Constructs SuggestStatus's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSuggestStatus' :: ( { "timems" :: NullOrUndefined (Number) , "rid" :: NullOrUndefined (String) } -> {"timems" :: NullOrUndefined (Number) , "rid" :: NullOrUndefined (String) } ) -> SuggestStatus
-newSuggestStatus'  customize = (SuggestStatus <<< customize) { "rid": (NullOrUndefined Nothing), "timems": (NullOrUndefined Nothing) }
+newSuggestStatus' :: ( { "timems" :: Maybe (Number) , "rid" :: Maybe (String) } -> {"timems" :: Maybe (Number) , "rid" :: Maybe (String) } ) -> SuggestStatus
+newSuggestStatus'  customize = (SuggestStatus <<< customize) { "rid": Nothing, "timems": Nothing }
 
 
 
@@ -617,9 +616,9 @@ instance encodeSuggester :: Encode Suggester where encode = genericEncode option
 
 -- | <p>An autocomplete suggestion that matches the query string specified in a <code>SuggestRequest</code>. </p>
 newtype SuggestionMatch = SuggestionMatch 
-  { "suggestion" :: NullOrUndefined (String)
-  , "score" :: NullOrUndefined (Number)
-  , "id" :: NullOrUndefined (String)
+  { "suggestion" :: Maybe (String)
+  , "score" :: Maybe (Number)
+  , "id" :: Maybe (String)
   }
 derive instance newtypeSuggestionMatch :: Newtype SuggestionMatch _
 derive instance repGenericSuggestionMatch :: Generic SuggestionMatch _
@@ -629,12 +628,12 @@ instance encodeSuggestionMatch :: Encode SuggestionMatch where encode = genericE
 
 -- | Constructs SuggestionMatch from required parameters
 newSuggestionMatch :: SuggestionMatch
-newSuggestionMatch  = SuggestionMatch { "id": (NullOrUndefined Nothing), "score": (NullOrUndefined Nothing), "suggestion": (NullOrUndefined Nothing) }
+newSuggestionMatch  = SuggestionMatch { "id": Nothing, "score": Nothing, "suggestion": Nothing }
 
 -- | Constructs SuggestionMatch's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSuggestionMatch' :: ( { "suggestion" :: NullOrUndefined (String) , "score" :: NullOrUndefined (Number) , "id" :: NullOrUndefined (String) } -> {"suggestion" :: NullOrUndefined (String) , "score" :: NullOrUndefined (Number) , "id" :: NullOrUndefined (String) } ) -> SuggestionMatch
-newSuggestionMatch'  customize = (SuggestionMatch <<< customize) { "id": (NullOrUndefined Nothing), "score": (NullOrUndefined Nothing), "suggestion": (NullOrUndefined Nothing) }
+newSuggestionMatch' :: ( { "suggestion" :: Maybe (String) , "score" :: Maybe (Number) , "id" :: Maybe (String) } -> {"suggestion" :: Maybe (String) , "score" :: Maybe (Number) , "id" :: Maybe (String) } ) -> SuggestionMatch
+newSuggestionMatch'  customize = (SuggestionMatch <<< customize) { "id": Nothing, "score": Nothing, "suggestion": Nothing }
 
 
 
@@ -680,10 +679,10 @@ newUploadDocumentsRequest' _contentType _documents customize = (UploadDocumentsR
 
 -- | <p>Contains the response to an <code>UploadDocuments</code> request.</p>
 newtype UploadDocumentsResponse = UploadDocumentsResponse 
-  { "status" :: NullOrUndefined (String)
-  , "adds" :: NullOrUndefined (Adds)
-  , "deletes" :: NullOrUndefined (Deletes)
-  , "warnings" :: NullOrUndefined (DocumentServiceWarnings)
+  { "status" :: Maybe (String)
+  , "adds" :: Maybe (Adds)
+  , "deletes" :: Maybe (Deletes)
+  , "warnings" :: Maybe (DocumentServiceWarnings)
   }
 derive instance newtypeUploadDocumentsResponse :: Newtype UploadDocumentsResponse _
 derive instance repGenericUploadDocumentsResponse :: Generic UploadDocumentsResponse _
@@ -693,10 +692,10 @@ instance encodeUploadDocumentsResponse :: Encode UploadDocumentsResponse where e
 
 -- | Constructs UploadDocumentsResponse from required parameters
 newUploadDocumentsResponse :: UploadDocumentsResponse
-newUploadDocumentsResponse  = UploadDocumentsResponse { "adds": (NullOrUndefined Nothing), "deletes": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing), "warnings": (NullOrUndefined Nothing) }
+newUploadDocumentsResponse  = UploadDocumentsResponse { "adds": Nothing, "deletes": Nothing, "status": Nothing, "warnings": Nothing }
 
 -- | Constructs UploadDocumentsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUploadDocumentsResponse' :: ( { "status" :: NullOrUndefined (String) , "adds" :: NullOrUndefined (Adds) , "deletes" :: NullOrUndefined (Deletes) , "warnings" :: NullOrUndefined (DocumentServiceWarnings) } -> {"status" :: NullOrUndefined (String) , "adds" :: NullOrUndefined (Adds) , "deletes" :: NullOrUndefined (Deletes) , "warnings" :: NullOrUndefined (DocumentServiceWarnings) } ) -> UploadDocumentsResponse
-newUploadDocumentsResponse'  customize = (UploadDocumentsResponse <<< customize) { "adds": (NullOrUndefined Nothing), "deletes": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing), "warnings": (NullOrUndefined Nothing) }
+newUploadDocumentsResponse' :: ( { "status" :: Maybe (String) , "adds" :: Maybe (Adds) , "deletes" :: Maybe (Deletes) , "warnings" :: Maybe (DocumentServiceWarnings) } -> {"status" :: Maybe (String) , "adds" :: Maybe (Adds) , "deletes" :: Maybe (Deletes) , "warnings" :: Maybe (DocumentServiceWarnings) } ) -> UploadDocumentsResponse
+newUploadDocumentsResponse'  customize = (UploadDocumentsResponse <<< customize) { "adds": Nothing, "deletes": Nothing, "status": Nothing, "warnings": Nothing }
 

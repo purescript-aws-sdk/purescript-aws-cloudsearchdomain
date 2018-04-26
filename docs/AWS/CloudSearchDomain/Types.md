@@ -26,7 +26,7 @@ Encode Adds
 
 ``` purescript
 newtype Bucket
-  = Bucket { value :: NullOrUndefined (String), count :: NullOrUndefined (Number) }
+  = Bucket { value :: Maybe (String), count :: Maybe (Number) }
 ```
 
 <p>A container for facet information. </p>
@@ -51,7 +51,7 @@ Constructs Bucket from required parameters
 #### `newBucket'`
 
 ``` purescript
-newBucket' :: ({ value :: NullOrUndefined (String), count :: NullOrUndefined (Number) } -> { value :: NullOrUndefined (String), count :: NullOrUndefined (Number) }) -> Bucket
+newBucket' :: ({ value :: Maybe (String), count :: Maybe (Number) } -> { value :: Maybe (String), count :: Maybe (Number) }) -> Bucket
 ```
 
 Constructs Bucket's fields from required parameters
@@ -60,7 +60,7 @@ Constructs Bucket's fields from required parameters
 
 ``` purescript
 newtype BucketInfo
-  = BucketInfo { buckets :: NullOrUndefined (BucketList) }
+  = BucketInfo { buckets :: Maybe (BucketList) }
 ```
 
 <p>A container for the calculated facet values and counts.</p>
@@ -85,7 +85,7 @@ Constructs BucketInfo from required parameters
 #### `newBucketInfo'`
 
 ``` purescript
-newBucketInfo' :: ({ buckets :: NullOrUndefined (BucketList) } -> { buckets :: NullOrUndefined (BucketList) }) -> BucketInfo
+newBucketInfo' :: ({ buckets :: Maybe (BucketList) } -> { buckets :: Maybe (BucketList) }) -> BucketInfo
 ```
 
 Constructs BucketInfo's fields from required parameters
@@ -158,7 +158,7 @@ Encode Deletes
 
 ``` purescript
 newtype DocumentServiceException
-  = DocumentServiceException { status :: NullOrUndefined (String), message :: NullOrUndefined (String) }
+  = DocumentServiceException { status :: Maybe (String), message :: Maybe (String) }
 ```
 
 <p>Information about any problems encountered while processing an upload request.</p>
@@ -183,7 +183,7 @@ Constructs DocumentServiceException from required parameters
 #### `newDocumentServiceException'`
 
 ``` purescript
-newDocumentServiceException' :: ({ status :: NullOrUndefined (String), message :: NullOrUndefined (String) } -> { status :: NullOrUndefined (String), message :: NullOrUndefined (String) }) -> DocumentServiceException
+newDocumentServiceException' :: ({ status :: Maybe (String), message :: Maybe (String) } -> { status :: Maybe (String), message :: Maybe (String) }) -> DocumentServiceException
 ```
 
 Constructs DocumentServiceException's fields from required parameters
@@ -192,7 +192,7 @@ Constructs DocumentServiceException's fields from required parameters
 
 ``` purescript
 newtype DocumentServiceWarning
-  = DocumentServiceWarning { message :: NullOrUndefined (String) }
+  = DocumentServiceWarning { message :: Maybe (String) }
 ```
 
 <p>A warning returned by the document service when an issue is discovered while processing an upload request.</p>
@@ -217,7 +217,7 @@ Constructs DocumentServiceWarning from required parameters
 #### `newDocumentServiceWarning'`
 
 ``` purescript
-newDocumentServiceWarning' :: ({ message :: NullOrUndefined (String) } -> { message :: NullOrUndefined (String) }) -> DocumentServiceWarning
+newDocumentServiceWarning' :: ({ message :: Maybe (String) } -> { message :: Maybe (String) }) -> DocumentServiceWarning
 ```
 
 Constructs DocumentServiceWarning's fields from required parameters
@@ -306,7 +306,7 @@ Encode Facets
 
 ``` purescript
 newtype FieldStats
-  = FieldStats { min :: NullOrUndefined (String), max :: NullOrUndefined (String), count :: NullOrUndefined (Number), missing :: NullOrUndefined (Number), sum :: NullOrUndefined (Number), sumOfSquares :: NullOrUndefined (Number), mean :: NullOrUndefined (String), stddev :: NullOrUndefined (Number) }
+  = FieldStats { min :: Maybe (String), max :: Maybe (String), count :: Maybe (Number), missing :: Maybe (Number), sum :: Maybe (Number), sumOfSquares :: Maybe (Number), mean :: Maybe (String), stddev :: Maybe (Number) }
 ```
 
 <p>The statistics for a field calculated in the request.</p>
@@ -331,7 +331,7 @@ Constructs FieldStats from required parameters
 #### `newFieldStats'`
 
 ``` purescript
-newFieldStats' :: ({ min :: NullOrUndefined (String), max :: NullOrUndefined (String), count :: NullOrUndefined (Number), missing :: NullOrUndefined (Number), sum :: NullOrUndefined (Number), sumOfSquares :: NullOrUndefined (Number), mean :: NullOrUndefined (String), stddev :: NullOrUndefined (Number) } -> { min :: NullOrUndefined (String), max :: NullOrUndefined (String), count :: NullOrUndefined (Number), missing :: NullOrUndefined (Number), sum :: NullOrUndefined (Number), sumOfSquares :: NullOrUndefined (Number), mean :: NullOrUndefined (String), stddev :: NullOrUndefined (Number) }) -> FieldStats
+newFieldStats' :: ({ min :: Maybe (String), max :: Maybe (String), count :: Maybe (Number), missing :: Maybe (Number), sum :: Maybe (Number), sumOfSquares :: Maybe (Number), mean :: Maybe (String), stddev :: Maybe (Number) } -> { min :: Maybe (String), max :: Maybe (String), count :: Maybe (Number), missing :: Maybe (Number), sum :: Maybe (Number), sumOfSquares :: Maybe (Number), mean :: Maybe (String), stddev :: Maybe (Number) }) -> FieldStats
 ```
 
 Constructs FieldStats's fields from required parameters
@@ -420,7 +420,7 @@ Encode Highlights
 
 ``` purescript
 newtype Hit
-  = Hit { id :: NullOrUndefined (String), fields :: NullOrUndefined (Fields), exprs :: NullOrUndefined (Exprs), highlights :: NullOrUndefined (Highlights) }
+  = Hit { id :: Maybe (String), fields :: Maybe (Fields), exprs :: Maybe (Exprs), highlights :: Maybe (Highlights) }
 ```
 
 <p>Information about a document that matches the search request.</p>
@@ -445,7 +445,7 @@ Constructs Hit from required parameters
 #### `newHit'`
 
 ``` purescript
-newHit' :: ({ id :: NullOrUndefined (String), fields :: NullOrUndefined (Fields), exprs :: NullOrUndefined (Exprs), highlights :: NullOrUndefined (Highlights) } -> { id :: NullOrUndefined (String), fields :: NullOrUndefined (Fields), exprs :: NullOrUndefined (Exprs), highlights :: NullOrUndefined (Highlights) }) -> Hit
+newHit' :: ({ id :: Maybe (String), fields :: Maybe (Fields), exprs :: Maybe (Exprs), highlights :: Maybe (Highlights) } -> { id :: Maybe (String), fields :: Maybe (Fields), exprs :: Maybe (Exprs), highlights :: Maybe (Highlights) }) -> Hit
 ```
 
 Constructs Hit's fields from required parameters
@@ -470,7 +470,7 @@ Encode HitList
 
 ``` purescript
 newtype Hits
-  = Hits { found :: NullOrUndefined (Number), start :: NullOrUndefined (Number), cursor :: NullOrUndefined (String), hit :: NullOrUndefined (HitList) }
+  = Hits { found :: Maybe (Number), start :: Maybe (Number), cursor :: Maybe (String), hit :: Maybe (HitList) }
 ```
 
 <p>The collection of documents that match the search request.</p>
@@ -495,7 +495,7 @@ Constructs Hits from required parameters
 #### `newHits'`
 
 ``` purescript
-newHits' :: ({ found :: NullOrUndefined (Number), start :: NullOrUndefined (Number), cursor :: NullOrUndefined (String), hit :: NullOrUndefined (HitList) } -> { found :: NullOrUndefined (Number), start :: NullOrUndefined (Number), cursor :: NullOrUndefined (String), hit :: NullOrUndefined (HitList) }) -> Hits
+newHits' :: ({ found :: Maybe (Number), start :: Maybe (Number), cursor :: Maybe (String), hit :: Maybe (HitList) } -> { found :: Maybe (Number), start :: Maybe (Number), cursor :: Maybe (String), hit :: Maybe (HitList) }) -> Hits
 ```
 
 Constructs Hits's fields from required parameters
@@ -584,7 +584,7 @@ Encode Return
 
 ``` purescript
 newtype SearchException
-  = SearchException { message :: NullOrUndefined (String) }
+  = SearchException { message :: Maybe (String) }
 ```
 
 <p>Information about any problems encountered while processing a search request.</p>
@@ -609,7 +609,7 @@ Constructs SearchException from required parameters
 #### `newSearchException'`
 
 ``` purescript
-newSearchException' :: ({ message :: NullOrUndefined (String) } -> { message :: NullOrUndefined (String) }) -> SearchException
+newSearchException' :: ({ message :: Maybe (String) } -> { message :: Maybe (String) }) -> SearchException
 ```
 
 Constructs SearchException's fields from required parameters
@@ -618,7 +618,7 @@ Constructs SearchException's fields from required parameters
 
 ``` purescript
 newtype SearchRequest
-  = SearchRequest { cursor :: NullOrUndefined (Cursor), expr :: NullOrUndefined (Expr), facet :: NullOrUndefined (Facet), filterQuery :: NullOrUndefined (FilterQuery), highlight :: NullOrUndefined (Highlight), partial :: NullOrUndefined (Partial''), query :: Query, queryOptions :: NullOrUndefined (QueryOptions), queryParser :: NullOrUndefined (QueryParser), return :: NullOrUndefined (Return), size :: NullOrUndefined (Size), sort :: NullOrUndefined (Sort), start :: NullOrUndefined (Start), stats :: NullOrUndefined (Stat) }
+  = SearchRequest { cursor :: Maybe (Cursor), expr :: Maybe (Expr), facet :: Maybe (Facet), filterQuery :: Maybe (FilterQuery), highlight :: Maybe (Highlight), partial :: Maybe (Partial''), query :: Query, queryOptions :: Maybe (QueryOptions), queryParser :: Maybe (QueryParser), return :: Maybe (Return), size :: Maybe (Size), sort :: Maybe (Sort), start :: Maybe (Start), stats :: Maybe (Stat) }
 ```
 
 <p>Container for the parameters to the <code>Search</code> request.</p>
@@ -643,7 +643,7 @@ Constructs SearchRequest from required parameters
 #### `newSearchRequest'`
 
 ``` purescript
-newSearchRequest' :: Query -> ({ cursor :: NullOrUndefined (Cursor), expr :: NullOrUndefined (Expr), facet :: NullOrUndefined (Facet), filterQuery :: NullOrUndefined (FilterQuery), highlight :: NullOrUndefined (Highlight), partial :: NullOrUndefined (Partial''), query :: Query, queryOptions :: NullOrUndefined (QueryOptions), queryParser :: NullOrUndefined (QueryParser), return :: NullOrUndefined (Return), size :: NullOrUndefined (Size), sort :: NullOrUndefined (Sort), start :: NullOrUndefined (Start), stats :: NullOrUndefined (Stat) } -> { cursor :: NullOrUndefined (Cursor), expr :: NullOrUndefined (Expr), facet :: NullOrUndefined (Facet), filterQuery :: NullOrUndefined (FilterQuery), highlight :: NullOrUndefined (Highlight), partial :: NullOrUndefined (Partial''), query :: Query, queryOptions :: NullOrUndefined (QueryOptions), queryParser :: NullOrUndefined (QueryParser), return :: NullOrUndefined (Return), size :: NullOrUndefined (Size), sort :: NullOrUndefined (Sort), start :: NullOrUndefined (Start), stats :: NullOrUndefined (Stat) }) -> SearchRequest
+newSearchRequest' :: Query -> ({ cursor :: Maybe (Cursor), expr :: Maybe (Expr), facet :: Maybe (Facet), filterQuery :: Maybe (FilterQuery), highlight :: Maybe (Highlight), partial :: Maybe (Partial''), query :: Query, queryOptions :: Maybe (QueryOptions), queryParser :: Maybe (QueryParser), return :: Maybe (Return), size :: Maybe (Size), sort :: Maybe (Sort), start :: Maybe (Start), stats :: Maybe (Stat) } -> { cursor :: Maybe (Cursor), expr :: Maybe (Expr), facet :: Maybe (Facet), filterQuery :: Maybe (FilterQuery), highlight :: Maybe (Highlight), partial :: Maybe (Partial''), query :: Query, queryOptions :: Maybe (QueryOptions), queryParser :: Maybe (QueryParser), return :: Maybe (Return), size :: Maybe (Size), sort :: Maybe (Sort), start :: Maybe (Start), stats :: Maybe (Stat) }) -> SearchRequest
 ```
 
 Constructs SearchRequest's fields from required parameters
@@ -652,7 +652,7 @@ Constructs SearchRequest's fields from required parameters
 
 ``` purescript
 newtype SearchResponse
-  = SearchResponse { status :: NullOrUndefined (SearchStatus), hits :: NullOrUndefined (Hits), facets :: NullOrUndefined (Facets), stats :: NullOrUndefined (Stats) }
+  = SearchResponse { status :: Maybe (SearchStatus), hits :: Maybe (Hits), facets :: Maybe (Facets), stats :: Maybe (Stats) }
 ```
 
 <p>The result of a <code>Search</code> request. Contains the documents that match the specified search criteria and any requested fields, highlights, and facet information.</p>
@@ -677,7 +677,7 @@ Constructs SearchResponse from required parameters
 #### `newSearchResponse'`
 
 ``` purescript
-newSearchResponse' :: ({ status :: NullOrUndefined (SearchStatus), hits :: NullOrUndefined (Hits), facets :: NullOrUndefined (Facets), stats :: NullOrUndefined (Stats) } -> { status :: NullOrUndefined (SearchStatus), hits :: NullOrUndefined (Hits), facets :: NullOrUndefined (Facets), stats :: NullOrUndefined (Stats) }) -> SearchResponse
+newSearchResponse' :: ({ status :: Maybe (SearchStatus), hits :: Maybe (Hits), facets :: Maybe (Facets), stats :: Maybe (Stats) } -> { status :: Maybe (SearchStatus), hits :: Maybe (Hits), facets :: Maybe (Facets), stats :: Maybe (Stats) }) -> SearchResponse
 ```
 
 Constructs SearchResponse's fields from required parameters
@@ -686,7 +686,7 @@ Constructs SearchResponse's fields from required parameters
 
 ``` purescript
 newtype SearchStatus
-  = SearchStatus { timems :: NullOrUndefined (Number), rid :: NullOrUndefined (String) }
+  = SearchStatus { timems :: Maybe (Number), rid :: Maybe (String) }
 ```
 
 <p>Contains the resource id (<code>rid</code>) and the time it took to process the request (<code>timems</code>).</p>
@@ -711,7 +711,7 @@ Constructs SearchStatus from required parameters
 #### `newSearchStatus'`
 
 ``` purescript
-newSearchStatus' :: ({ timems :: NullOrUndefined (Number), rid :: NullOrUndefined (String) } -> { timems :: NullOrUndefined (Number), rid :: NullOrUndefined (String) }) -> SearchStatus
+newSearchStatus' :: ({ timems :: Maybe (Number), rid :: Maybe (String) } -> { timems :: Maybe (Number), rid :: Maybe (String) }) -> SearchStatus
 ```
 
 Constructs SearchStatus's fields from required parameters
@@ -802,7 +802,7 @@ Encode Stats
 
 ``` purescript
 newtype SuggestModel
-  = SuggestModel { query :: NullOrUndefined (String), found :: NullOrUndefined (Number), suggestions :: NullOrUndefined (Suggestions) }
+  = SuggestModel { query :: Maybe (String), found :: Maybe (Number), suggestions :: Maybe (Suggestions) }
 ```
 
 <p>Container for the suggestion information returned in a <code>SuggestResponse</code>.</p>
@@ -827,7 +827,7 @@ Constructs SuggestModel from required parameters
 #### `newSuggestModel'`
 
 ``` purescript
-newSuggestModel' :: ({ query :: NullOrUndefined (String), found :: NullOrUndefined (Number), suggestions :: NullOrUndefined (Suggestions) } -> { query :: NullOrUndefined (String), found :: NullOrUndefined (Number), suggestions :: NullOrUndefined (Suggestions) }) -> SuggestModel
+newSuggestModel' :: ({ query :: Maybe (String), found :: Maybe (Number), suggestions :: Maybe (Suggestions) } -> { query :: Maybe (String), found :: Maybe (Number), suggestions :: Maybe (Suggestions) }) -> SuggestModel
 ```
 
 Constructs SuggestModel's fields from required parameters
@@ -836,7 +836,7 @@ Constructs SuggestModel's fields from required parameters
 
 ``` purescript
 newtype SuggestRequest
-  = SuggestRequest { query :: Query, suggester :: Suggester, size :: NullOrUndefined (SuggestionsSize) }
+  = SuggestRequest { query :: Query, suggester :: Suggester, size :: Maybe (SuggestionsSize) }
 ```
 
 <p>Container for the parameters to the <code>Suggest</code> request.</p>
@@ -861,7 +861,7 @@ Constructs SuggestRequest from required parameters
 #### `newSuggestRequest'`
 
 ``` purescript
-newSuggestRequest' :: Query -> Suggester -> ({ query :: Query, suggester :: Suggester, size :: NullOrUndefined (SuggestionsSize) } -> { query :: Query, suggester :: Suggester, size :: NullOrUndefined (SuggestionsSize) }) -> SuggestRequest
+newSuggestRequest' :: Query -> Suggester -> ({ query :: Query, suggester :: Suggester, size :: Maybe (SuggestionsSize) } -> { query :: Query, suggester :: Suggester, size :: Maybe (SuggestionsSize) }) -> SuggestRequest
 ```
 
 Constructs SuggestRequest's fields from required parameters
@@ -870,7 +870,7 @@ Constructs SuggestRequest's fields from required parameters
 
 ``` purescript
 newtype SuggestResponse
-  = SuggestResponse { status :: NullOrUndefined (SuggestStatus), suggest :: NullOrUndefined (SuggestModel) }
+  = SuggestResponse { status :: Maybe (SuggestStatus), suggest :: Maybe (SuggestModel) }
 ```
 
 <p>Contains the response to a <code>Suggest</code> request.</p>
@@ -895,7 +895,7 @@ Constructs SuggestResponse from required parameters
 #### `newSuggestResponse'`
 
 ``` purescript
-newSuggestResponse' :: ({ status :: NullOrUndefined (SuggestStatus), suggest :: NullOrUndefined (SuggestModel) } -> { status :: NullOrUndefined (SuggestStatus), suggest :: NullOrUndefined (SuggestModel) }) -> SuggestResponse
+newSuggestResponse' :: ({ status :: Maybe (SuggestStatus), suggest :: Maybe (SuggestModel) } -> { status :: Maybe (SuggestStatus), suggest :: Maybe (SuggestModel) }) -> SuggestResponse
 ```
 
 Constructs SuggestResponse's fields from required parameters
@@ -904,7 +904,7 @@ Constructs SuggestResponse's fields from required parameters
 
 ``` purescript
 newtype SuggestStatus
-  = SuggestStatus { timems :: NullOrUndefined (Number), rid :: NullOrUndefined (String) }
+  = SuggestStatus { timems :: Maybe (Number), rid :: Maybe (String) }
 ```
 
 <p>Contains the resource id (<code>rid</code>) and the time it took to process the request (<code>timems</code>).</p>
@@ -929,7 +929,7 @@ Constructs SuggestStatus from required parameters
 #### `newSuggestStatus'`
 
 ``` purescript
-newSuggestStatus' :: ({ timems :: NullOrUndefined (Number), rid :: NullOrUndefined (String) } -> { timems :: NullOrUndefined (Number), rid :: NullOrUndefined (String) }) -> SuggestStatus
+newSuggestStatus' :: ({ timems :: Maybe (Number), rid :: Maybe (String) } -> { timems :: Maybe (Number), rid :: Maybe (String) }) -> SuggestStatus
 ```
 
 Constructs SuggestStatus's fields from required parameters
@@ -954,7 +954,7 @@ Encode Suggester
 
 ``` purescript
 newtype SuggestionMatch
-  = SuggestionMatch { suggestion :: NullOrUndefined (String), score :: NullOrUndefined (Number), id :: NullOrUndefined (String) }
+  = SuggestionMatch { suggestion :: Maybe (String), score :: Maybe (Number), id :: Maybe (String) }
 ```
 
 <p>An autocomplete suggestion that matches the query string specified in a <code>SuggestRequest</code>. </p>
@@ -979,7 +979,7 @@ Constructs SuggestionMatch from required parameters
 #### `newSuggestionMatch'`
 
 ``` purescript
-newSuggestionMatch' :: ({ suggestion :: NullOrUndefined (String), score :: NullOrUndefined (Number), id :: NullOrUndefined (String) } -> { suggestion :: NullOrUndefined (String), score :: NullOrUndefined (Number), id :: NullOrUndefined (String) }) -> SuggestionMatch
+newSuggestionMatch' :: ({ suggestion :: Maybe (String), score :: Maybe (Number), id :: Maybe (String) } -> { suggestion :: Maybe (String), score :: Maybe (Number), id :: Maybe (String) }) -> SuggestionMatch
 ```
 
 Constructs SuggestionMatch's fields from required parameters
@@ -1054,7 +1054,7 @@ Constructs UploadDocumentsRequest's fields from required parameters
 
 ``` purescript
 newtype UploadDocumentsResponse
-  = UploadDocumentsResponse { status :: NullOrUndefined (String), adds :: NullOrUndefined (Adds), deletes :: NullOrUndefined (Deletes), warnings :: NullOrUndefined (DocumentServiceWarnings) }
+  = UploadDocumentsResponse { status :: Maybe (String), adds :: Maybe (Adds), deletes :: Maybe (Deletes), warnings :: Maybe (DocumentServiceWarnings) }
 ```
 
 <p>Contains the response to an <code>UploadDocuments</code> request.</p>
@@ -1079,7 +1079,7 @@ Constructs UploadDocumentsResponse from required parameters
 #### `newUploadDocumentsResponse'`
 
 ``` purescript
-newUploadDocumentsResponse' :: ({ status :: NullOrUndefined (String), adds :: NullOrUndefined (Adds), deletes :: NullOrUndefined (Deletes), warnings :: NullOrUndefined (DocumentServiceWarnings) } -> { status :: NullOrUndefined (String), adds :: NullOrUndefined (Adds), deletes :: NullOrUndefined (Deletes), warnings :: NullOrUndefined (DocumentServiceWarnings) }) -> UploadDocumentsResponse
+newUploadDocumentsResponse' :: ({ status :: Maybe (String), adds :: Maybe (Adds), deletes :: Maybe (Deletes), warnings :: Maybe (DocumentServiceWarnings) } -> { status :: Maybe (String), adds :: Maybe (Adds), deletes :: Maybe (Deletes), warnings :: Maybe (DocumentServiceWarnings) }) -> UploadDocumentsResponse
 ```
 
 Constructs UploadDocumentsResponse's fields from required parameters
